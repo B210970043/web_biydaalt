@@ -1,0 +1,32 @@
+.tetgeleg h1 {  
+    text-align: center;  
+    color: rgb(19, 124, 148);  
+}  
+   
+.tetgeleg fieldset {  
+    margin-left: 20%;
+    margin-right: 20%;
+}
+   
+.tetgeleg input{  
+    padding: .2rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin: 1px;
+    width: 100%;
+;}  
+   
+ .tetgeleg label {  
+    margin: 10px;  
+}  
+   
+.tetgeleg button {  
+    padding: .3rem;  
+    font-size: 15px;  
+    background-color: rgb(5, 73, 98);  
+    border: 4px solid #ccc;  
+    color: #ccc;  
+    padding: 10px;  
+    border-radius: 8px;  
+    margin: 10px;  
+}

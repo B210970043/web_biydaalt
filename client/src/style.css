@@ -1,0 +1,144 @@
+body{
+    background-color: #d2e1eb;
+}
+.header{
+    position: fixed;
+    top: 0;
+    left:0;
+    right:0;
+    z-index: 1000;
+    background: var(--yellow);
+    background: rgb(243, 243, 243);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 9%;
+    box-shadow: 0 0.5rem 1rem rgba(8, 3, 3, 0.1);
+}
+.header .logo{
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: #01411C;
+   
+}
+.header .logo i{
+    color: #01411C;
+    padding-right: .5rem;
+}
+
+.header .navbar a{
+    font-size: 1.7rem;
+    color:#01411C;
+    margin: 0 1rem;
+    font-weight: bold;
+    text-decoration: overline;
+    text-decoration-color: rgb(8, 37, 94);
+}
+.header .navbar h1{
+    margin-left: 30px;
+    color: #01411C;
+    font-weight: bold;
+}
+.header .navbar h4{
+    margin-left: 70px;
+    color: #01411C;
+    font-weight: bold;
+}
+
+.header .navbar a:hover{
+    color: #dfefe6;
+}
+
+.header .icons div{
+    font-size: 2.5rem;
+    margin-left: 1.7rem;
+    cursor: pointer;
+    color:#01411C;
+}
+
+.header .icons div:hover{
+    color:#01411C;
+}
+#menu-btn{
+    display: none;
+}
+
+.about button{
+    text-align: center;
+    justify-content: center;
+    font-size: 16px ;
+    background-color: #046aaa;
+    border: none;
+    color: white;
+    padding: 30px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    float: left;
+    margin-left: 450px;
+}
+.about1 button{
+    text-align: center;
+    justify-content: center;
+    font-size: 16px ;
+    background-color: #046aaa; 
+    border: none;
+    color: white;
+    padding: 30px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+}
+.about button:hover{
+    background-color: rgb(2, 76, 141);
+}
+
+.about1 button:hover{
+    background-color: rgb(2, 76, 141);
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10rem;
+    text-align: center;
+    background-image: url('./components/images/rea.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+.home .slides-container .slide{
+    display: flex;
+    flex-wrap: wrap;
+    display: none;
+}
+.home .slides-container .slide.active{
+    display: flex;
+}
+.home .slides-container .slide-active .content {
+    flex: 1;
+    text-align: left;
+}
+.home .slides-container .slide-active .content h3 {
+    text-shadow: #000000;
+    color: #2d0a0a;
+    text-shadow: rgb(224, 62, 62);
+    text-align: justify;
+    text-transform: uppercase;
+    font-family: monospace;
+    width:500px;
+}
+
+.home .slides-container .slide-active .content h1 {
+    color: rgb(16, 16, 28);
+    text-decoration: underline;
+    text-decoration-color: #f2fbff;
+    margin-bottom: 40px;
+    font-size: 28px;
+    text-transform: uppercase;
+    font-family: monospace;
+}

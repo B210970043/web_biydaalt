@@ -1,0 +1,210 @@
+
+body{
+    background-color: #d2e1eb;
+}
+.header{
+    position: fixed;
+    top: 0;
+    left:0;
+    right:0;
+    z-index: 1000;
+    background: var(--yellow);
+    background: rgb(243, 243, 243);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 9%;
+    box-shadow: 0 0.5rem 1rem rgba(8, 3, 3, 0.1);
+}
+.header .logo{
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: #01411C;
+   
+}
+.header .logo i{
+    color: #01411C;
+    padding-right: .5rem;
+}
+
+.header .navbar a{
+    font-size: 1.7rem;
+    color:#01411C;
+    margin: 0 1rem;
+    font-weight: bold;
+    text-decoration: overline;
+    text-decoration-color: rgb(8, 37, 94);
+}
+.header .navbar h1{
+    margin-left: 30px;
+    color: #01411C;
+    font-weight: bold;
+}
+.header .navbar h4{
+    margin-left: 70px;
+    color: #01411C;
+    font-weight: bold;
+}
+
+.header .navbar a:hover{
+    color: #dfefe6;
+}
+
+.header .icons div{
+    font-size: 2.5rem;
+    margin-left: 1.7rem;
+    cursor: pointer;
+    color:#01411C;
+}
+
+.header .icons div:hover{
+    color:#01411C;
+}
+#menu-btn{
+    display: none;
+}
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10rem;
+    text-align: center;
+    background-image: url('./images/rea.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+.home .slides-container .slide{
+    display: flex;
+    flex-wrap: wrap;
+    display: none;
+}
+.home .slides-container .slide.active{
+    display: flex;
+}
+.home .slides-container .slide-active .content {
+    flex: 1; /* Take up the available space */
+    text-align: left; /* Align text content to the left */
+}
+.home .slides-container .slide-active .content h3 {
+    text-shadow: #000000;
+    color: #000000;
+    text-shadow: rgb(224, 62, 62);
+    text-align: justify;
+    text-transform: uppercase;
+    font-family: monospace;
+    width:500px;
+}
+
+.home .slides-container .slide-active .content h1 {
+    color: rgb(16, 16, 28);
+    text-decoration: underline;
+    text-decoration-color: #f2fbff;
+    margin-bottom: 40px;
+    font-size: 50px;
+    text-transform: uppercase;
+    font-family: monospace;
+}
+.about{
+    margin-top: 150px;
+    background-color: #6496ba;
+    
+}
+.about h1{
+    text-align: center;
+    justify-content: center;
+    font-size: 50px;
+    color: rgb(52, 52, 163);
+    text-decoration: overline;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.about .box-container{
+    display: -ms-grid;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1rem));
+    gap: 1.5rem;
+    margin-left:120px;
+    margin-top: 60px;
+}
+   .about .box-container .box {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    height: 14rem;
+    width: 20rem;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.7);
+
+    }
+.about .box-container .box .img{
+    overflow: hidden;
+}
+.about .box-container .box .img img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.about .box-container .box .img img:hover{
+    transform:scale(1.1);
+}
+
+.about .box-container .box-0 h3{
+    justify-content: center;
+    margin-left: 70px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.about .box-container .box-0 h4{
+    margin-left: 70px;
+    text-transform: capitalize;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+.contact{
+    margin-top: 130px;
+}
+.contact h1{
+    text-align: center;
+    justify-content: center;
+    color: rgb(52, 52, 163);
+    text-decoration: overline;
+    margin-top: 80px;
+    text-shadow: black;
+}
+.contact .icons-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1rem));
+    gap:1.5rem;
+    margin: 60px;
+}
+
+.contact .icons-container .icons{
+    text-align: center;
+    border: 0.1rem solid rgba(18, 100, 222, 0.7);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.7) ;
+    padding: 2rem;
+}
+.contact .icons-container .icons i{
+    height: 6rem;
+    width: 6rem;
+    line-height: 6rem;
+    font-size: 2.5rem;
+    background: #f2fbff;
+    border-radius: 50%;
+}
+.contact .icons-container .icons h3{
+    color: rgb(29, 188, 251);
+    font-size: 2rem;
+    padding: 1rem 0;
+}
+.contact .icons-container .icons p{
+    font-size: 1.5rem;
+    line-height: 1;
+
+}
+
+
+  
