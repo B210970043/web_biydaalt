@@ -1,32 +1,80 @@
-.tetgeleg h1 {  
-    text-align: center;  
-    color: rgb(19, 124, 148);  
-}  
-   
-.tetgeleg fieldset {  
-    margin-left: 20%;
-    margin-right: 20%;
+*{
+color:rgb(19, 124, 148); ;
 }
-   
-.tetgeleg input{  
-    padding: .2rem;
+
+.tetgelegH1 {
+    text-align: center;
+    color: rgb(19, 124, 148);
+
+}
+
+.tetgeleg h1 {
+    color: rgb(19, 124, 148);
+    font-size: 32px; /* Adjust the font size as needed */
+    margin-bottom: 20px; /* Adjust the margin as needed */
+}
+
+.tetgeleg fieldset {
+    margin: 20px auto;
+    width: 60%;
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid rgb(19, 124, 148);
+    border-radius: 8px;
+}
+
+.tetgeleg input {
+    color: rgb(17, 110, 131);
+
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
     border: 2px solid #ccc;
     border-radius: 4px;
-    margin: 1px;
+}
+
+.tetgeleg label {
+    color: rgb(19, 124, 148);
+
+    display: block;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.tetgeleg select {
     width: 100%;
-;}  
-   
- .tetgeleg label {  
-    margin: 10px;  
-}  
-   
-.tetgeleg button {  
-    padding: .3rem;  
-    font-size: 15px;  
-    background-color: rgb(5, 73, 98);  
-    border: 4px solid #ccc;  
-    color: #ccc;  
-    padding: 10px;  
-    border-radius: 8px;  
-    margin: 10px;  
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+.tetgeleg button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: rgb(5, 73, 98);
+    border: 2px solid #ccc;
+    color: #fff;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 200px;
+}
+
+.tetgeleg button:hover {
+    background-color: rgb(19, 124, 148);
+}
+
+.tetgeleg a {
+    display: block;
+    margin-top: 10px;
+    color: rgb(19, 124, 148);
+    text-decoration: none;
+}
+
+.tetgeleg a:hover {
+    text-decoration: underline;
 }
