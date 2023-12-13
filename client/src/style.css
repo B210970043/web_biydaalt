@@ -151,38 +151,45 @@ body{
 
 
 .box.container {
-  border: 1px solid #ddd; 
-  border-style:double;
-  box-shadow: #007bff;
-  padding: 5px; 
-  margin-bottom: 20px; 
-  background-color: #85d0e7; 
-}
-
-.box.container h1,
-.box.container h2,
-.box.container h3 {
-  color: #333;
-}
-
-.box.container p {
-  color: #666; 
-}
-
-.box.container li {
-  color: #555;
-  margin-bottom: 5px; 
-}
-
-.box.container a {
-  color: #9ebad9;
-  text-decoration: none;
-}
-
-.box.container a:hover {
-  text-decoration: underline;
-}
-.box.container i{
-    margin-left: 700px;
-}
+    border: 1px solid #ddd; 
+    border-style: double;
+    box-shadow: #007bff;
+    padding: 5px; 
+    background-color: #85d0e7; 
+    width: 500px;
+    margin-bottom: 8px;
+  }
+  
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap; 
+  }
+  
+  .box.container h1,
+  .box.container h2,
+  .box.container h3 {
+    color: #333;
+  }
+  
+  .box.container p {
+    color: #666; 
+  }
+  
+  .box.container li {
+    color: #555;
+    margin-bottom: 5px; 
+  }
+  
+  .box.container a {
+    color: #9ebad9;
+    text-decoration: none;
+  }
+  
+  .box.container a:hover {
+    text-decoration: underline;
+  }
+  
+  .box.container i {
+    margin-left: auto; /* Align the icon to the right */
+  }
   
