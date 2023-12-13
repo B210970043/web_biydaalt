@@ -67,7 +67,7 @@ function AddScholarship() {
         <h1>Тэтгэлэг нэмэх</h1>
       </div>
 
-      <fieldset>
+      <fieldset >
         <form onSubmit={handleSubmit}>
           <label htmlFor="baiguullaga">Байгууллага нэр : </label>
           <input

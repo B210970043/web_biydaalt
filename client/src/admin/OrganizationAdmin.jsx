@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { faTrash, faFontAwesome, faEdit, faCheck, faAdd, faCheckToSlot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import '../Scholarships/scholar.css'
 function OrganizationAdmin() {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
@@ -51,8 +52,8 @@ function OrganizationAdmin() {
     <div>
     <h1 style={{ alignItems: 'center', justifyContent: 'center', textAlign: 'center',color: 'blue'}}>Байгууллагын мэдээлэл : </h1>
       <div style={{ padding: '30px', textAlign: 'center' }}>
-      <table class='table table-info'>
-          <thead>
+      <table >
+          <thead className='head-scholar'>
             <tr>
               <th></th>
               <th>Байгууллагын дугаар : </th>
@@ -66,7 +67,7 @@ function OrganizationAdmin() {
 
             </tr>
           </thead>
-          <tbody>
+          <tbody className='body-scholar'>
           {data.map((d) => (
             <tr key={d._id}>
               <td>{d.role}</td>
@@ -101,7 +102,7 @@ function OrganizationAdmin() {
         </table>
       
       <Link to="/admin">
-          <button style={{ marginTop: '20px', padding: '10px', background: 'blue',color: 'white' }}>Гарах</button>
+          <button  className='exit-button' style={{ marginTop: '20px', padding: '10px', background: 'blue',color: 'white' }}>Гарах</button>
         </Link>
         </div>
     </div>

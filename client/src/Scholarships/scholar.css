@@ -1,5 +1,5 @@
 *{
-color:rgb(19, 124, 148); ;
+/* color:rgb(19, 124, 148); ; */
 }
 
 .tetgelegH1 {
@@ -78,3 +78,50 @@ color:rgb(19, 124, 148); ;
 .tetgeleg a:hover {
     text-decoration: underline;
 }
+
+.exit-button{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: rgb(5, 73, 98);
+    border: 2px solid #ccc;
+    color: #fff;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 200px;
+}
+
+/* Add some basic styling to the table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  /* Style the table header */
+  .head-scholar {
+    background-color: #5bc0de; /* Change this to your desired header background color */
+    color: #fff; /* Change this to your desired header text color */
+  }
+  
+  .head-scholar th {
+    padding: 10px;
+    font-weight: bold;
+  }
+  
+  /* Style the table body */
+  .body-scholar tr:nth-child(even) {
+    background-color: #f2f2f2; /* Change this to your desired even row background color */
+  }
+  
+  .body-scholar td {
+    padding: 10px;
+  }
+  
+  /* Add hover effect on table rows */
+  .body-scholar tr:hover {
+    background-color: #dff0d8; /* Change this to your desired row hover background color */
+  }
+  

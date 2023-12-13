@@ -5,6 +5,7 @@ import { faTrash, faFontAwesome, faEdit, faCheck, faAdd } from "@fortawesome/fre
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
 import Swal from "sweetalert2";
+import '../Scholarships/scholar.css'
 
 
 function CheckScholarships() {
@@ -81,8 +82,8 @@ const deleteScholar = (id, name) => {
     <div>
     <h1 style={{ alignItems: 'center', justifyContent: 'center', textAlign: 'center',color: 'blue'}}>Тэтгэлэгийн мэдээлэл : </h1>
       <div style={{ padding: '30px', textAlign: 'center' }}>
-      <table class='table table-info'>
-        <thead>
+      <table >
+        <thead className='head-scholar'>
             <tr>
               <th>Байгууллагын нэр :</th>
               <th>Байгууллагын имэйл хаяг :</th>
@@ -95,7 +96,7 @@ const deleteScholar = (id, name) => {
               <th>нэмэх:</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody className='body-scholar'>
   {Array.isArray(data) && data.map((d) => (
     d.map((a)=>
     <tr key={a._id}>
@@ -127,7 +128,7 @@ const deleteScholar = (id, name) => {
         </table>
       
       <Link to="/organization">
-          <button style={{ marginTop: '20px', padding: '10px', background: 'blue',color: 'white' }}>Гарах</button>
+          <button className='exit-button' style={{ marginTop: '20px', padding: '10px', background: 'blue',color: 'white' }}>Гарах</button>
         </Link>
         </div>
     </div>

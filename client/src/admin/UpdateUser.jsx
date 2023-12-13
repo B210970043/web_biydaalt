@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import '../Scholarships/scholar.css'
 
 function UpdateUser() {
     const { id } = useParams();

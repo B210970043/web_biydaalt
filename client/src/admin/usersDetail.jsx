@@ -2,6 +2,7 @@ import React, { useState, useEffect, Component } from 'react';
 import { faTrash, faFontAwesome, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
+import '../Scholarships/scholar.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
@@ -55,8 +56,8 @@ function UsersDetail() {
     <div>
       <h1 style={{ textAlign: 'center', color: 'blue' }}>Хэрэглэгчдийн мэдээлэл :</h1>
       <div style={{ padding: '30px', textAlign: 'center' }}>
-        <table className='table table-info'>
-          <thead>
+        <table >
+          <thead className='head-scholar'>
             <tr>
               <th>Хэрэглэгчийн дугаар</th>
               <th>Хэрэглэгчийн нэр</th>
@@ -67,7 +68,7 @@ function UsersDetail() {
               
             </tr>
           </thead>
-          <tbody>
+          <tbody className='body-scholar'>
             {data.map((d) => (
               <tr key={d._id}>
                 <td>{d._id}</td>
@@ -93,7 +94,7 @@ function UsersDetail() {
           </tbody>
         </table>
         <Link to="/admin">
-          <button style={{ marginTop: '20px', padding: '10px', background: 'blue',color: 'white' }}>Гарах</button>
+          <button className='exit-button' style={{ marginTop: '20px', padding: '10px', background: 'blue',color: 'white' }}>Гарах</button>
         </Link>
       </div>
     </div>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import "./scholar.css";
 
 function ShowSc() {
   const { email } = useParams();
@@ -23,8 +24,9 @@ function ShowSc() {
         Тэтгэлэгийн мэдээлэл :{' '}
       </h1>
       <div style={{ padding: '30px', textAlign: 'center' }}>
-        <table className="table table-info">
-          <thead>
+        
+        <table >
+          <thead className='head-scholar'>
             <tr>
               <th>Байгууллагын нэр :</th>
               <th>Байгууллагын имэйл хаяг :</th>
@@ -35,7 +37,7 @@ function ShowSc() {
               <th>Зарласан огноо:</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className='body-scholar'>
             {Array.isArray(data) &&
               data.map((d) =>
                 d.map((a) => (
@@ -54,7 +56,7 @@ function ShowSc() {
         </table>
 
         <Link to={`/Organization_success/${email}`}>
-          <button style={{ marginTop: '20px', padding: '10px', background: 'blue', color: 'white' }}>Гарах</button>
+          <button className='exit-button' style={{ marginTop: '20px', padding: '10px', background: 'blue', color: 'white' }}>Гарах</button>
         </Link>
       </div>
     </div>
