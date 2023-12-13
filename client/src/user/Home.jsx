@@ -76,7 +76,7 @@ function Home() {
           <div className="slide-active">
             <div className="content">
               <h2 style={{marginLeft: '30px'}}>Оюутанд зориулсан тэтгэлэгийн систем</h2>
-              <h3 style={{ fontStyle: 'italic', marginLeft: '50px'}}>
+              <h3 style={{ fontStyle: 'italic', marginLeft: '100px', fontSize: '24px'}}>
   Боловсрол нь улс үндэстэн, хүний хөгжлийн
   суурь. Тийм учраас залууст суралцах боломжийг
   нээлттэй байлгахын тулд боловсролыг
