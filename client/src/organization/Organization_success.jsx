@@ -53,10 +53,10 @@ function Organization_success() {
             </div>
         </div>
    </section>
-   <section class="about" id="about">
+   <section className="secButton" class="about" id="about">
              <Link to={`/addScholarship/${email}`}><button style={{marginRight: "10px"}}>Тэтгэлэг нэмэх</button></Link>
     </section>
-    <section class="about1" id="about1">
+    <section className="secButton" class="about1" id="about1">
              <Link to={`/showSc/${email}`}><button>Нэмсэн тэтгэлэг харах</button></Link>
     </section>
     

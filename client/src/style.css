@@ -192,4 +192,27 @@ body{
   .box.container i {
     margin-left: auto; /* Align the icon to the right */
   }
+
   
+.secButton button {
+    background-color: rgb(5, 73, 98);
+    color: #fff;
+    border: 2px solid #ccc;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.secButton button:hover {
+    background-color: rgb(19, 124, 148);
+}
+
+.about1 button {
+    background-color: rgb(5, 73, 98);
+}
+
+.about1 button:hover {
+    background-color: rgb(19, 124, 148);
+}
