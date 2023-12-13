@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom';
 
 function Myinfo() {
     const { _id } = useParams();
@@ -50,9 +48,10 @@ function Myinfo() {
     };
 
     return (
-        <div className="d-flex w-70 vh-40 justify-content-center align-items-center">
-            <div className="w-50 border bg-dark text-white p-5">
+        <div className="d-flex w-70 vh-40 justify-content-center align-items-center" style={{ background: 'white'}}>
+            <div className="w-50 border bg-dark text-white p-5" >
                 <h1>Хэрэглэгчийн хувийн мэдээлэл/CV</h1>
+                <img src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="user" width="60"></img>
                 <form onSubmit={handleSubmit}>
                         <label htmlFor="name"> Нэр : </label>
                         <input
