@@ -4,10 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { faTrash, faFontAwesome, faEdit, faCheck, faAdd } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
+import Swal from "sweetalert2";
+
 
 function CheckScholarships() {
   const { email } = useParams();
   const [data, setData] = useState([]);
+  const [scholarshipStatus, setScholarshipStatus] = useState(false);
+
   const navigate = useNavigate();
   useEffect(() => {
     axios.get(`http://localhost:3001/scholarshipsCheck/${email}`)
@@ -43,6 +47,34 @@ const deleteScholar = (id, name) => {
         });
     } else {
     }
+  };
+  const addScholarshipsClick = async (id) => {
+    
+      axios.put(`http://localhost:3001/addS/${id}`)
+      .then(res => {
+        console.log(res);
+          setScholarshipStatus(true);
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Баталгаажуулсан !!',
+                showConfirmButton: false,
+                timer: 1500
+              })                   
+            
+            if(res.data === 'already'){
+              Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Баталгаажсан тэтгэлэг байна !!',
+                showConfirmButton: false,
+                timer: 1500
+              }) 
+            }
+    })
+    .catch(err => {
+        console.log(err);
+    });
   };
   
   return (
@@ -84,9 +116,9 @@ const deleteScholar = (id, name) => {
       <td>
         <FontAwesomeIcon
           icon={faCheck}
-          onClick={() => navigate(`/addHomeScholar/${a._id}`)}
-          style={{ cursor: 'pointer', color: 'red' }}
-        />
+          onClick={() => addScholarshipsClick(a._id)}
+          style={{ cursor: 'pointer',color: scholarshipStatus ? 'green' : 'red',}}
+          />
       </td>
     </tr>
  ) ))}

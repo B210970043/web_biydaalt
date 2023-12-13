@@ -2,13 +2,25 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAddressCard, faPhone } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 import "../style.css";
 function Organization_success() {
+    const { email } = useParams();
+    const [organization, setOrganization] = useState("");
+    useEffect(() => {
+        axios.get(`http://localhost:3001/organFind/${email}`)
+            .then(res => {
+                setOrganization(res.data);
+            })
+            .catch(err => console.log(err));
+    }, [email]);
+
   return (
     <div>
     <header>
-        
         <header class="header">
         <a href="#home" class="logo"><i class="fa-solid fa-border-style"></i>ScholarShips</a>
           <nav class="navbar">
@@ -16,6 +28,7 @@ function Organization_success() {
               <a href="#tetgeleg">Тэтгэлэг</a>
               <a href="#contact">Холбоо барих</a>
               <Link to="/login"><button>Гарах</button></Link>
+              <h1 style={{font: "italic small-caps bold 20px/30px Georgia, serif",color: "Blue"}}>Сайн уу "{organization.name}"</h1>
           </nav>
         <div class="icons">
             <div id="menu-btn" class="fas fa-bars"></div>
@@ -41,10 +54,10 @@ function Organization_success() {
         </div>
    </section>
    <section class="about" id="about">
-             <Link to="/addScholarship"><button style={{marginRight: "10px"}}>Тэтгэлэг нэмэх</button></Link>
+             <Link to={`/addScholarship/${email}`}><button style={{marginRight: "10px"}}>Тэтгэлэг нэмэх</button></Link>
     </section>
     <section class="about1" id="about1">
-             <Link to="/showScholarship"><button>Нэмсэн тэтгэлэг харах</button></Link>
+             <Link to={`/showSc/${email}`}><button>Нэмсэн тэтгэлэг харах</button></Link>
     </section>
     
     <section class="contact" id="contact">

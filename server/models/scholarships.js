@@ -12,8 +12,6 @@ const ScholarSchema = new mongoose.Schema({
     shaardlaga2: String,
     shaardlaga3: String,
     lang1: String,
-    lang2: String,
-    lang3: String,
     material1: String,
     material2: String,
     material3: String,

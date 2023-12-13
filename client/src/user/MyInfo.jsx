@@ -11,6 +11,7 @@ function Myinfo() {
     const navigate = useNavigate();
     const [user, setUser] = useState('');
 
+
     useEffect(() => {
         axios.get(`http://localhost:3001/usersDetail/${_id}`)
             .then(res => {
@@ -24,6 +25,7 @@ function Myinfo() {
             ...user,
             [e.target.name]: e.target.value,
         });
+
     };
 
     const handleSubmit = (e) => {
@@ -52,7 +54,7 @@ function Myinfo() {
             <div className="w-50 border bg-dark text-white p-5">
                 <h1>Хэрэглэгчийн хувийн мэдээлэл/CV</h1>
                 <form onSubmit={handleSubmit}>
-                        <label htmlFor="name">Хэрэглэгчийн нэр : </label>
+                        <label htmlFor="name"> Нэр : </label>
                         <input
                             type="text"
                             name="name"
@@ -61,7 +63,7 @@ function Myinfo() {
                             value={user.name}
                             onChange={user.name}
                         />
-                        <label htmlFor="email">Хэрэглэгчийн имэйл : </label>
+                        <label htmlFor="email"> Имэйл : </label>
                         <input
                             type="email"
                             name="email"
@@ -71,7 +73,7 @@ function Myinfo() {
                             onChange={user.email}
                         />
     
-                        <label htmlFor="password">Хэрэглэгчийн нууц үг : </label>
+                        <label htmlFor="password"> Нууц үг : </label>
                         <input
                             type="password"
                             name="password"
@@ -91,7 +93,7 @@ function Myinfo() {
                             onChange={handleChange}
                         />
     
-                        <label htmlFor="dugaar">Хэрэглэгчийн утасны дугаар : </label>
+                        <label htmlFor="dugaar"> Утасны дугаар : </label>
                         <input
                             type="text"
                             name="phone_number"
@@ -112,11 +114,18 @@ function Myinfo() {
                         />
                         <br></br>
 
-                        <label htmlFor="dugaar"> Хүйс : </label>
-                       <select>
-                            <option value={"er"}>Эр</option>
-                            <option value={"em"}>Эм</option>
-                       </select>
+                        <label htmlFor="Huis"> Хүйс : </label>
+                        
+                            <select
+                                name="Huis"
+                                value={user.Huis}
+                                onChange={handleChange}
+                            >
+                                    <option value={"er"}>Эр</option>
+                                    <option value={"em"}>Эм</option>
+                            </select>
+
+                       
                        <br></br>
                         <label htmlFor="dugaar">Төрсөн он сар : </label>
                         <input
@@ -147,7 +156,10 @@ function Myinfo() {
                         />
                         <br></br>
                         <label htmlFor="dugaar">Ажлын туршлага сар/жил : </label>
-                        <select>
+                        <select
+                            name="Job_experience"
+                            value={user.Job_experience}
+                            onChange={handleChange}>
                             <option value={"0"}>байхгүй</option>
                             <option value={"1"}>1 сар</option>
                             <option value={"2"}>2 сар</option>
@@ -166,7 +178,7 @@ function Myinfo() {
                         </select>
                         <br></br>
 
-                        <label htmlFor="dugaar">Хэрэглэгчийн голч дүн : </label>
+                        <label htmlFor="dugaar"> голч дүн : </label>
                         <input
                             type="text"
                             name="GPA"
@@ -176,7 +188,11 @@ function Myinfo() {
                             onChange={handleChange}
                         />
                         <label htmlFor="dugaar">Курсын дугаар : </label>
-                        <select>
+                        <select 
+                            name="Course"
+                            value={user.Course}
+                            onChange={handleChange}
+                            >
                             <option value={1}>1</option>
                             <option value={2}>2</option>
                             <option value={3}>3</option>

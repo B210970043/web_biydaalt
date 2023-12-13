@@ -18,7 +18,7 @@ function Organization_login(){
             .then(result => {
                 console.log(result)
                 if(result.data === "Success"){
-                    navigate('/Organization_success')
+                    navigate(`/Organization_success/${email}`)
                 }
                 else if(result.data === "unsuccess"){
                     Swal.fire('Алдаа', 'Уг байгууллага бүртгэлгүй байна !!', '');

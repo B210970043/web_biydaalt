@@ -18,14 +18,17 @@ import UpdateOrgan from './admin/UpdateOrgan';
 import UpdateUser from './admin/UpdateUser';
 import CheckScholarships from './admin/CheckScholarships';
 import MyInfo from './user/MyInfo';
+import ShowSc from './Scholarships/showScholarship';
 function App() {
+
     return (
       <BrowserRouter>
         <Routes>
             <Route path='/' element={<Home1/>}></Route>
             <Route path='/register' element={<Signup/>}></Route>
+            <Route path='/showSc/:email' element={<ShowSc/>}></Route>
             <Route path='/login' element={<Login/>}></Route>
-            <Route path='/home/:email' element={<Home/>}></Route>
+            <Route path='/home/:email' element={<Home/>} />
             <Route path='/admin' element={<Admin/>}></Route>
             <Route path='/ForgetPassword' element={<Password/>} ></Route>
             <Route path="/ChangePassword/:email" element={<ChangePassword />} />
@@ -33,14 +36,12 @@ function App() {
             <Route path='/organization_register' element={<Organization_Signup/>} ></Route>
             <Route path='/Organization_login' element={<Organization_login/>} ></Route>
             <Route path='/organization' element={<OrganizationAdmin/>} ></Route>
-            <Route path='/Organization_success' element={<Organization_success/>} ></Route>
-            <Route path='/addScholarship' element={<AddScholarship/>} ></Route>
+            <Route path='/Organization_success/:email' element={<Organization_success/>} ></Route>
+            <Route path='/addScholarship/:email' element={<AddScholarship/>} ></Route>
             <Route path='/UpdateOrgan/:id' element={<UpdateOrgan/>} ></Route>
             <Route path='/UpdateUser/:id' element={<UpdateUser/>} ></Route>
             <Route path='/CheckScholarships/:email' element={<CheckScholarships/>} ></Route>
             <Route path='/Myinfo/:_id' element={<MyInfo/>} ></Route>
-
-
         </Routes>
       </BrowserRouter>
     )

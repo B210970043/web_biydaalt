@@ -3,10 +3,11 @@ import "./scholar.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 function AddScholarship() {
     const  [nameofBaiguullaga, setName] = useState()
-    const  [email, setEmail] = useState()
     const  [nameofTetgeleg, setNameofTetgeleg] = useState()
     const  [hotolbor, setHotolbor] = useState()
     const  [things1, setThings1] = useState()
@@ -16,25 +17,29 @@ function AddScholarship() {
     const  [shaardlaga2, setShaardlaga2] = useState()
     const  [shaardlaga3, setShaardlaga3] = useState()
     const  [lang1, setLan1] = useState()
-    const  [lang2, setLan2] = useState()
-    const  [lang3, setLan3] = useState()
     const  [material1, setMaterial1] = useState()
     const  [material2, setMaterial2] = useState()
     const  [material3, setMaterial3] = useState()
     const  [url, setUrl] = useState()
+    const { email } = useParams();
+    const [organization, setOrganization] = useState("");
+    useEffect(() => {
+        axios.get(`http://localhost:3001/organFind/${email}`)
+            .then(res => {
+                setOrganization(res.data);
+            })
+            .catch(err => console.log(err));
+    }, [email]);
 
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const languages = [];
-            if (lang1) languages.push("English");
-            if (lang2) languages.push("Korean");
-            if (lang3) languages.push("Japan");
+       
         axios.post('http://localhost:3001/addScholarship', {nameofBaiguullaga, email, nameofTetgeleg,hotolbor,things1,things2,
-        things3,shaardlaga1,shaardlaga2,shaardlaga3,languages,material1,material2,material3,url})
+        things3,shaardlaga1,shaardlaga2,shaardlaga3,lang1,material1,material2,material3,url})
         .then(result => {console.log(result)
-            navigate('/Organization_success')
+            navigate(`/Organization_success/${email}`)
         })
         .catch(err => console.log(err))
     }
@@ -48,8 +53,9 @@ function AddScholarship() {
                     type="text" 
                     name="nameofBaiguullaga" 
                     id="baiguullaga" 
-                    placeholder="Байгууллага нэр оруулна уу " 
-                    onChange={(e) => setName(e.target.value)}
+                    placeholder="nameofBaiguullaga" 
+                    value={organization.name}
+                    onChange={(e) => setName(organization.name)}
                     />  
                     <br /><br />  
                     <label htmlFor="email">Байгууллага имэйл хаяг : </label>  
@@ -58,8 +64,8 @@ function AddScholarship() {
                                 name="email" 
                                 id="email" 
                                 placeholder="Байгууллага имэйл хаяг" 
-                                onChange={(e) => setEmail(e.target.value)}
-                            />  
+                                value={organization.email}
+                                />  
                             <br /><br /> 
                     <label htmlFor="name">Тэтгэлэг нэр : </label>  
                 <input  
@@ -105,8 +111,6 @@ function AddScholarship() {
                                 id="things3"
                                 placeholder="Тэтгэлэгт багтах зүйлс оруулна уу" 
                                 onChange={(e) => setThings3(e.target.value)}
-
-                                  
                             />
                             <br /><br />
                             <label htmlFor="shaardlaga1">Тэтгэлэгийн шаардлагууд : </label>
@@ -143,21 +147,15 @@ function AddScholarship() {
                             <br /><br />  
                             4. <label htmlFor="hel">Хэлний мэдлэг : </label>  
                             <br /><br />   
-                            <input type="checkbox" name="lang1" 
-                                id="English"                                 
-                                onChange={(e) => setLan1(e.target.value)}
-                                />  
-                            English  
-                            <input type="checkbox" name="lang2" 
-                                id="Korean"                                 
-                                onChange={(e) => setLan2(e.target.value)}
-                                />  
-                            Korean  
-                            <input type="checkbox" name="lang3" 
-                                id="Japan" 
-                                onChange={(e) => setLan3(e.target.value)}
-                                />
-                            Japan  
+                            <select 
+                            name="lang1"
+                            onChange={(e) => setLan1(e.target.value)}
+                            >
+                            <option value={'English'}>English</option>
+                            <option value={'Korea'}>Korea</option>
+                            <option value={'Japan'}>Japan</option>
+                            <option value={'China'}>China</option>
+                        </select> 
                             <br /><br />  
                             <label htmlFor="things">Бүрдүүлэх материал:  </label>  
                             <br /><br />
@@ -167,8 +165,6 @@ function AddScholarship() {
                                 id="things1"
                                 placeholder="Бүрдүүлэх материал оруулна уу" 
                                 onChange={(e) => setMaterial1(e.target.value)}
-
-                                  
                             />
                             <br /><br />
                             2.<input  
@@ -204,7 +200,7 @@ function AddScholarship() {
                             />  
                             <br /><br />   
                             <button type="submit" value="Submit">Submit</button>
-                            <Link to = "/Organization_success">Буцах</Link>
+                            <Link to = {`/Organization_success/${email}`}>Буцах</Link>
                         </form>
                         
                 </fieldset>  
