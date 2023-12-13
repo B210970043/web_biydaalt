@@ -38,8 +38,8 @@ function Myinfo() {
                         title: 'Амжилттай шинэчлэгдлээ !!',
                         showConfirmButton: false,
                         timer: 1500
-                      })    
-                      navigate(`/home/${user.email}`)                    
+                      })
+                      navigate(`/home/${user.email}`)
                     }
             })
             .catch(err => {
