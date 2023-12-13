@@ -55,7 +55,7 @@ function UsersDetail() {
   return (
     <div>
       <h1 style={{ textAlign: 'center', color: 'blue' }}>Хэрэглэгчдийн мэдээлэл :</h1>
-      <div style={{ padding: '30px', textAlign: 'center' }}>
+      <div style={{ padding: '30px', textAlign: 'center', width: '100%' ,}}>
         <table >
           <thead className='head-scholar'>
             <tr>
@@ -64,6 +64,7 @@ function UsersDetail() {
               <th>Хэрэглэгчийн имэйл хаяг</th>
               <th>Хэрэглэгчийн нууц үг</th>
               <th>Устгах</th>
+            {/* HI bogoo */}
               <th>Засах</th>
               
             </tr>
