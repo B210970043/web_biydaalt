@@ -94,8 +94,42 @@ app.post('/register', async (req, res) => {
             res.status(500).json('dotood server error');
         });
 });
-// app.post('/saveScholarUser/:nameOfTetgeleg', (req,res) => {
-// })
+app.post('/saveScholarUser/:scholarName/:userID', async (req, res) => {
+    try {
+      const { scholarName, userID } = req.params;
+      const userSave = await UserSaveModel.findOne({ scholarName, userID });
+  
+      if (userSave) {
+        res.json('true');
+      } else {
+        await UserSaveModel.create({ userID, scholarName });
+        res.status(200).json({ success: true, message: 'success' });
+      }
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ success: false, message: 'aldaa' });
+    }
+  });
+//   app.get('/saveScholarUser/:userID', async (req, res) => {
+//     try {
+//       const { userID } = req.params;
+//       const userSave = await UserSaveModel.find({ userID });
+
+//       if (userSave) {
+//         res.json(userSave)
+//       } else {
+//         res.status(200).json({ success: true, message: 'success' });
+//       }
+//     } catch (err) {
+//       console.error(err);
+//       res.status(500).json({ success: false, message: 'aldaa' });
+//     }
+//   });
+  
+  
+  
+  
+  
 app.post('/organization_register', (req, res) => {
     const { name, email, password } = req.body;
     OrganizationModel.findOne({ email })
@@ -132,6 +166,39 @@ app.get('/usersDetail', async (req, res) => {
         console.log(error);
     }
 });
+app.get('/getSavedData/:userID', async (req, res) => {
+    try {
+    const { userID } = req.params;
+    const userSave = await UserSaveModel.findOne({userID});
+    if (userSave) {
+        res.json({
+            userID: userSave.userID,
+            scholarName: userSave.scholarName,
+        });
+        res.send({ data: userSave});
+    } else {
+        res.status(404).json({ error: ' not found' });
+    }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'dotood server error' });
+    }
+});
+
+app.get('/searchByScholarName/:userID', async (req, res) => {
+    try {
+      const { userID } = req.params;
+      console.log('userID:', userID);
+      const result = await UserSaveModel.findOne({ userID });
+      console.log(':', result);
+      res.json(result);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+  
+
 
 app.post("/deleteUser", async (req, res) => {
     const { userid } = req.body;
@@ -358,7 +425,7 @@ app.put('/addS/:id', async(req,res) => {
         }
         upd.amjilttai = true;
         await upd.save();
-        return res.json(upd);
+        return res.json('success');
         console.log(res.data);
         
     }

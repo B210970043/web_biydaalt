@@ -1,7 +1,7 @@
 const mongoose  = require('mongoose')
 
 const userSaveSchema = new mongoose.Schema({
-    userName: String,
+    userID: String,
     scholarName: String,
     date: { type: Date, default: Date.now },
 })
