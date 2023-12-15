@@ -76,7 +76,8 @@ function AddScholarship() {
             id="baiguullaga"
             placeholder="nameofBaiguullaga"
             value={organization.name}
-            onChange={(e) => setName(organization.name)}
+            onChange={(e) => setName(e.target.value)}
+
           />
           <br />
           <br />

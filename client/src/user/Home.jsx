@@ -10,12 +10,18 @@ function Home() {
   const { email } = useParams();
   const [user, setUser] = useState("");
   const [selectedScholarship, setSelectedScholarship] = useState(null);
+  const [saveStatus, setSaveStatus] = useState(null);
+
+  const [showSavedData, setShowSavedData] = useState(false);
+  const [savedData, setSavedData] = useState([]);
+
 
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     organizationDetail();
   }, []);
+
   const organizationDetail = () => {
     fetch('http://localhost:3001/scholars', {
       method: "GET",
@@ -38,17 +44,44 @@ function Home() {
 
   const saveClick = async (name) => {
     try {
-      const res = await axios.post(`http://localhost:3001/saveScholarUser/${name}/${user.id}`);
-      setSave(res.data);
+      const response = await axios.post(`http://localhost:3001/saveScholarUser/${name}/${user._id}`);
+      setSaveStatus(response.data);
+      console.log('Server Response:', response.data);
+      // const scholarName = response.data.scholarName;
+      console.log('Scholar Name:', name);
     } catch (err) {
-      console.log(err);
+      console.log('Error:', err);
     }
   };
+
+  // const getClick = async () => {
+  //   try {
+  //     const response = await axios.get(`http://localhost:3001/saveScholarUser/${name}/${user._id}`);
+  //     setSaveStatus(response.data);
+  //     console.log('Server Response:', response.data);
+  //     // const scholarName = response.data.scholarName;
+  //     console.log('Scholar Name:', name);
+  //   } catch (err) {
+  //     console.log('Error:', err);
+  //   }
+  // };
+  const handleDropdownItemClick = async (_id) => {
+    try {
+      const response = await axios.get(`http://localhost:3001/searchByScholarName/${_id}`);
+      setSavedData(response.data);
+      setShowSavedData(true);
+    } catch (error) {
+      console.error('Error:', error);
+      console.error(error.message);
+    }
+  };
+  
+  
+  
   
 
   return (
     <div>
-      <header>
         <header className="header">
           <a href="#home" class="logo"><i class="fas fa-phone"><FontAwesomeIcon icon={faSchoolFlag} /></i></a>
           <nav className="navbar">
@@ -57,7 +90,9 @@ function Home() {
               <a href="#tetgeleg">Тэтгэлэг</a>
               <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
               <Dropdown.Menu>
-                <Dropdown.Item href={``}>Хадгалсан Тэтгэлэг</Dropdown.Item>
+              <Dropdown.Item onClick={() => handleDropdownItemClick(user._id)}>
+                Хадгалсан Тэтгэлэг
+              </Dropdown.Item>
                 <Dropdown.Item href="#tetgeleg">Бүх Тэтгэлэг</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
@@ -70,19 +105,19 @@ function Home() {
             <div id="menu-btn" className="fas fa-bars"></div>
           </div>
         </header>
-      </header>
+
       <section className="home" id="home">
         <div className="slides-container">
           <div className="slide-active">
             <div className="content">
               <h2 style={{marginLeft: '30px'}}>Оюутанд зориулсан тэтгэлэгийн систем</h2>
               <h3 style={{ fontStyle: 'italic', marginLeft: '100px', fontSize: '24px'}}>
-  Боловсрол нь улс үндэстэн, хүний хөгжлийн
-  суурь. Тийм учраас залууст суралцах боломжийг
-  нээлттэй байлгахын тулд боловсролыг
-  хүртээмжтэй болгож нийгэмд эерэг өөрчлөлт
-  авчирхаар бид зорин ажиллаж байна.
-</h3>
+                Боловсрол нь улс үндэстэн, хүний хөгжлийн
+                суурь. Тийм учраас залууст суралцах боломжийг
+                нээлттэй байлгахын тулд боловсролыг
+                хүртээмжтэй болгож нийгэмд эерэг өөрчлөлт
+                авчирхаар бид зорин ажиллаж байна.
+              </h3>
 
             </div>
             <div className="img">
@@ -91,19 +126,26 @@ function Home() {
           </div>
         </div>
       </section>
-      <section className="tetgeleg" id="tetgeleg">
-        <div className="slides-container">
-          <div className="slide-active">
-          <div class="flex-container">
+
+      {/* <section className="tet" id="tet">
+        <div className="conhome">
+          <div className="slide-actives">
+          <div class="flex-containers">
             {data.map((d) => (
               <div
                 key={d._id}
-                className={`box container ${selectedScholarship === d._id ? "selected" : ""}`}
+                className={`box-containers ${selectedScholarship === d._id ? "selected" : ""}`}
                 onClick={() => handleBoxClick(d._id)}
               >
+           <div className='b'>
+              <button onClick={(e) => { e.stopPropagation(); saveClick(d.nameofTetgeleg); }}
+              style={{ backgroundColor: saveStatus === 'true' ? 'green' : 'blue' }}
+               class="fas fa-phone">
+                <FontAwesomeIcon icon={faStar} />
+              </button>
+            </div>
                 <h1>{d.nameofBaiguullaga}</h1>
-                <button onClick={() => saveClick(d.nameofTetgeleg)} class="fas fa-phone"><FontAwesomeIcon icon={faStar} /></button>
-                {d.date}
+                <p>{d.date}</p>
                 <h2>{d.nameofTetgeleg}</h2>   
                 <p>{d.hotolbor}</p>
 
@@ -113,12 +155,55 @@ function Home() {
                     <li>{d.shaardlaga1}</li>
                     <li>{d.shaardlaga2}</li>
                     <li>{d.shaardlaga3}</li>
-                    <div className="box">
+                    <div className="boxs">
                       <h3>Бүрдүүлэх шаардлагатай материалууд : </h3>
                       <li>{d.material1}</li>
                       <li>{d.material2}</li>
                       <li>{d.material3}</li>
-                      <a href={d.url}>Холбоос</a>
+                      <a href={d.url}>Дэлгэрэнгүй</a>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+            </div>
+          </div>
+        </div>
+      </section> */}
+      <section className="tet" id="tet">
+        <div className="conhome">
+          <div className="slide-actives">
+          <div class="flex-containers">
+            {data.map((d) => (
+              <div
+                key={d._id}
+                className={`box-containers ${selectedScholarship === d._id ? "selected" : ""}`}
+                onClick={() => handleBoxClick(d._id)}
+              >
+           <div className='b'>
+              <button onClick={(e) => { e.stopPropagation(); saveClick(d.nameofTetgeleg); }}
+              style={{ backgroundColor: saveStatus === 'true' ? 'green' : 'blue' }}
+               class="fas fa-phone">
+                <FontAwesomeIcon icon={faStar} />
+              </button>
+            </div>
+                <h1>{d.nameofBaiguullaga}</h1>
+                <p>{d.date}</p>
+                <h2>{d.nameofTetgeleg}</h2>   
+                <p>{d.hotolbor}</p>
+
+                {selectedScholarship === d._id && (
+                  <div className="additional-details">
+                    <h3>Тэтгэлэгийн шалгуурууд : </h3>
+                    <li>{d.shaardlaga1}</li>
+                    <li>{d.shaardlaga2}</li>
+                    <li>{d.shaardlaga3}</li>
+                    <div className="boxs">
+                      <h3>Бүрдүүлэх шаардлагатай материалууд : </h3>
+                      <li>{d.material1}</li>
+                      <li>{d.material2}</li>
+                      <li>{d.material3}</li>
+                      <a href={d.url}>Дэлгэрэнгүй</a>
                     </div>
                   </div>
                 )}

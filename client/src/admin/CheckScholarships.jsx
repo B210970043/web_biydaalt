@@ -53,14 +53,15 @@ const deleteScholar = (id, name) => {
       axios.put(`http://localhost:3001/addS/${id}`)
       .then(res => {
         console.log(res);
-          setScholarshipStatus(true);
+          
             Swal.fire({
                 position: 'center',
                 icon: 'success',
                 title: 'Баталгаажуулсан !!',
                 showConfirmButton: false,
                 timer: 1500
-              })                   
+              })       
+                         
             
             if(res.data === 'already'){
               Swal.fire({
@@ -117,7 +118,8 @@ const deleteScholar = (id, name) => {
         <FontAwesomeIcon
           icon={faCheck}
           onClick={() => addScholarshipsClick(a._id)}
-          style={{ cursor: 'pointer',color: scholarshipStatus ? 'green' : 'red',}}
+          
+          style={{ cursor: 'pointer', color: scholarshipStatus ? 'green' : 'red',}}
           />
       </td>
     </tr>
