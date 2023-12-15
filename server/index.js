@@ -110,21 +110,21 @@ app.post('/saveScholarUser/:scholarName/:userID', async (req, res) => {
       res.status(500).json({ success: false, message: 'aldaa' });
     }
   });
-//   app.get('/saveScholarUser/:userID', async (req, res) => {
-//     try {
-//       const { userID } = req.params;
-//       const userSave = await UserSaveModel.find({ userID });
+  app.get('/saveScholarUser/:userID', async (req, res) => {
+    try {
+      const { userID } = req.params;
+      const userSave = await UserSaveModel.find({ userID });
 
-//       if (userSave) {
-//         res.json(userSave)
-//       } else {
-//         res.status(200).json({ success: true, message: 'success' });
-//       }
-//     } catch (err) {
-//       console.error(err);
-//       res.status(500).json({ success: false, message: 'aldaa' });
-//     }
-//   });
+      if (userSave) {
+        res.json(userSave)
+      } else {
+        res.status(200).json({ success: true, message: 'success' });
+      }
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ success: false, message: 'aldaa' });
+    }
+  });
   
   
   

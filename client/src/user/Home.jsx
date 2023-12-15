@@ -14,7 +14,7 @@ function Home() {
 
   const [showSavedData, setShowSavedData] = useState(false);
   const [savedData, setSavedData] = useState([]);
-
+ const [aaa,setaaa] = useState([]);
 
   const [data, setData] = useState([]);
   const navigate = useNavigate();
@@ -47,24 +47,27 @@ function Home() {
       const response = await axios.post(`http://localhost:3001/saveScholarUser/${name}/${user._id}`);
       setSaveStatus(response.data);
       console.log('Server Response:', response.data);
-      // const scholarName = response.data.scholarName;
       console.log('Scholar Name:', name);
     } catch (err) {
       console.log('Error:', err);
     }
   };
-
-  // const getClick = async () => {
-  //   try {
-  //     const response = await axios.get(`http://localhost:3001/saveScholarUser/${name}/${user._id}`);
-  //     setSaveStatus(response.data);
-  //     console.log('Server Response:', response.data);
-  //     // const scholarName = response.data.scholarName;
-  //     console.log('Scholar Name:', name);
-  //   } catch (err) {
-  //     console.log('Error:', err);
-  //   }
-  // };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3001/saveScholarUser/${user._id}`);
+        setaaa(response.data);
+        console.log('a:', response.data);
+        // const scholarName = response.data.scholarName;
+        console.log('Scholar Name:', response.data.scholarName);
+      } catch (err) {
+        console.log('Error:', err);
+      }
+    };
+  
+    fetchData(); // Call the async function
+  }, [user._id]); // Add dependencies if needed
+  
   const handleDropdownItemClick = async (_id) => {
     try {
       const response = await axios.get(`http://localhost:3001/searchByScholarName/${_id}`);
@@ -127,51 +130,38 @@ function Home() {
         </div>
       </section>
 
-      {/* <section className="tet" id="tet">
+
+
+      <section className="tet" id="tet">
         <div className="conhome">
+        <h1>Хадгалсан тэтгэлэг</h1>
+
           <div className="slide-actives">
           <div class="flex-containers">
-            {data.map((d) => (
+            {aaa.map((d) => (
               <div
                 key={d._id}
                 className={`box-containers ${selectedScholarship === d._id ? "selected" : ""}`}
                 onClick={() => handleBoxClick(d._id)}
               >
-           <div className='b'>
-              <button onClick={(e) => { e.stopPropagation(); saveClick(d.nameofTetgeleg); }}
-              style={{ backgroundColor: saveStatus === 'true' ? 'green' : 'blue' }}
-               class="fas fa-phone">
-                <FontAwesomeIcon icon={faStar} />
-              </button>
-            </div>
-                <h1>{d.nameofBaiguullaga}</h1>
-                <p>{d.date}</p>
-                <h2>{d.nameofTetgeleg}</h2>   
-                <p>{d.hotolbor}</p>
-
-                {selectedScholarship === d._id && (
-                  <div className="additional-details">
-                    <h3>Тэтгэлэгийн шалгуурууд : </h3>
-                    <li>{d.shaardlaga1}</li>
-                    <li>{d.shaardlaga2}</li>
-                    <li>{d.shaardlaga3}</li>
-                    <div className="boxs">
-                      <h3>Бүрдүүлэх шаардлагатай материалууд : </h3>
-                      <li>{d.material1}</li>
-                      <li>{d.material2}</li>
-                      <li>{d.material3}</li>
-                      <a href={d.url}>Дэлгэрэнгүй</a>
-                    </div>
-                  </div>
-                )}
+              <h1>{d.scholarName}</h1>
               </div>
-            ))}
+            ))} 
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
+
+
+
+
+
+
+
       <section className="tet" id="tet">
         <div className="conhome">
+        <h1>Бүх тэтгэлэг</h1>
+
           <div className="slide-actives">
           <div class="flex-containers">
             {data.map((d) => (
